@@ -253,7 +253,9 @@ section {
 .header_icons_list .days_area .days {
   border-radius: 12px;
   overflow: hidden;
-  width: max-content;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .header_icons_list .day_btn {
@@ -309,6 +311,6 @@ section {
   border-radius: 8px;
 }
 
-.header_icons_list .icons_group .right_icons .icons{
+.header_icons_list .icons_group .right_icons .icons {
   color: var(--desc-color);
 }
