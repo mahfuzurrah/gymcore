@@ -37,7 +37,9 @@ const data = [
 ];
 
 const Exercices = () => (
-  <Table dataSource={data} pagination={false}>
+  <Table dataSource={data} pagination={false} scroll={{
+    x: 550,
+  }}>
     <Column title="Exercice name" dataIndex="title" key="firstName" />
     <Column title="Muscle" dataIndex="muscle" key="muscle" />
     <Column

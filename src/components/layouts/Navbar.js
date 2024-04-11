@@ -45,7 +45,7 @@ function Navbar({ toggleSidebar }) {
         </li>
       </ul>
       <div className="right_area">
-      <Dropdown menu={{ items }}>
+      <Dropdown menu={{ items }} className="mobile_hide">
         <Link onClick={(e) => e.preventDefault()}>
           <Space className="header_dropdown">
             <div className="title">

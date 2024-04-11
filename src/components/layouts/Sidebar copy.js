@@ -1,47 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPlus, FaRegCalendarTimes } from "react-icons/fa";
 import { PiTelegramLogoFill } from "react-icons/pi";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 import Search from "../search/Search";
 import "./layout.css";
 
 const Sidebar = ({ isOpen }) => {
-  const [menuItems, setMenuItems] = useState([
+  const location = useLocation();
+  const [activeItem, setActiveItem] = useState("/");
+
+  useEffect(() => {
+    const currentPath = location.pathname.split("/")[1];
+    setActiveItem(currentPath || "/");
+  }, [location.pathname]);
+
+  const menuItems = [
     {
-      id: 1,
       label: "Théo",
       icon: <PiTelegramLogoFill className="icons" />,
-      isActive: true,
+      path: "/",
     },
     {
-      id: 2,
       label: "Lucas",
       icon: <FaRegCalendarTimes className="icons" />,
-      isActive: false,
+      path: "#",
     },
     {
-      id: 3,
       label: "Julien",
       icon: <PiTelegramLogoFill className="icons" />,
-      isActive: false,
+      path: "#",
     },
     {
-      id: 4,
       label: "Maxime",
       icon: <FaRegCalendarTimes className="icons" />,
-      isActive: false,
+      path: "#",
     },
-    { id: 5, label: "Arthur", isActive: false },
-  ]);
-
-  const setActiveItem = (id) => {
-    // Map over items and update isActive status
-    const updatedItems = menuItems.map((item) => ({
-      ...item,
-      isActive: item.id === id,
-    }));
-    setMenuItems(updatedItems);
-  };
+    {
+      label: "Arthur",
+      path: "#",
+    },
+  ];
 
   return (
     <div className={`side_navbar ${isOpen ? "" : "sider-collapsed"}`}>
@@ -58,14 +57,15 @@ const Sidebar = ({ isOpen }) => {
       <ul className="side_nav_menu">
         {menuItems.map((item) => (
           <li
-            key={item.id}
-            className={`side_nav_list ${item.isActive ? "active" : ""}`}
-            onClick={() => setActiveItem(item.id)}
+            key={item.label}
+            className={`side_nav_list ${
+              activeItem === item.path ? "active" : ""
+            }`}
           >
-            <p className="nav-link">
+            <Link to={item.path} className="nav-link">
               {item.label}
               {item.icon}
-            </p>
+            </Link>
           </li>
         ))}
       </ul>

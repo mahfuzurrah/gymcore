@@ -60,7 +60,7 @@
   line-height: normal;
 }
 .main_body {
-  padding-left: 250px;
+  padding-left: 260px;
   width: 100%;
 }
 
@@ -98,8 +98,11 @@
   gap: 12px;
 }
 .main_body .top_navbar .nav_menu .nav_link.btn {
-  background: var(--bg-color);
+  background: var(--white-color);
   color: var(--title-color);
+}
+.main_body .top_navbar .nav_menu .nav_link.btn:hover {
+  color: var(--title-color) !important;
 }
 
 .header_dropdown {
@@ -138,5 +141,11 @@
 
   .side_navbar.sider-collapsed {
     left: 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .mobile_hide {
+    display: none;
   }
 }

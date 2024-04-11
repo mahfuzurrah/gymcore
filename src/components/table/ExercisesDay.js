@@ -62,7 +62,9 @@ const data = [
 ];
 
 const ExercisesDay = () => (
-  <Table dataSource={data} pagination={false}>
+  <Table dataSource={data} pagination={false} scroll={{
+    x: 768,
+  }}>
     <Column
       title="Select"
       key="select"
