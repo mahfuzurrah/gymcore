@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaBars } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { Dropdown, Space } from "antd";
@@ -6,12 +6,7 @@ import { HiOutlineIdentification } from "react-icons/hi";
 import { PiBarbellFill, PiForkKnife, PiTelegramLogoFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
-function Navbar() {
-  const [sidebarActive, setSidebarActive] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarActive(!sidebarActive);
-  };
+function Navbar({ toggleSidebar }) {
 
   const items = [
     {
@@ -49,6 +44,7 @@ function Navbar() {
           </Link>
         </li>
       </ul>
+      <div className="right_area">
       <Dropdown menu={{ items }}>
         <Link onClick={(e) => e.preventDefault()}>
           <Space className="header_dropdown">
@@ -61,9 +57,9 @@ function Navbar() {
         </Link>
       </Dropdown>
       <div className="toggle_btn" onClick={toggleSidebar}>
-        <FaBars className="icons" />
+      <FaBars className="icons" />
+    </div>
       </div>
-      {sidebarActive && <div className="sidebar">Sidebar content</div>}
     </>
   );
 }

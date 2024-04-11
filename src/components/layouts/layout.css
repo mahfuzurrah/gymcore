@@ -4,6 +4,7 @@
   top: 0;
   padding: 20px;
   background: var(--body-color) !important;
+  z-index: 999;
 }
 
 .ant-layout {
@@ -73,6 +74,7 @@
   justify-content: space-between;
   gap: 30px;
   padding: 20px;
+  z-index: 99;
 }
 
 .main_body .top_navbar .title {
@@ -115,6 +117,12 @@
   display: none;
 }
 
+.right_area {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 @media screen and (max-width: 991px) {
   .main_body {
     padding: 0;
@@ -123,8 +131,12 @@
     display: block;
   }
 
-  .ant-layout.main_body.css-dev-only-do-not-override-1kuana8 {
+  .side_navbar {
     position: fixed;
+    left: -100%;
+  }
+
+  .side_navbar.sider-collapsed {
     left: 0;
   }
 }

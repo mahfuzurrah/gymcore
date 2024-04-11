@@ -6,13 +6,13 @@ import logo from "../assets/img/logo.png";
 import Search from "../search/Search";
 import "./layout.css";
 
-const Sidebar = ({ active }) => {
+const Sidebar = ({ isOpen }) => {
   const location = useLocation();
-  const [activeItem, setActiveItem] = useState("/");
+  const [activeItem, setActiveItem] = useState("dashboard");
 
   useEffect(() => {
-    const currentPath = location.pathname;
-    setActiveItem(currentPath);
+    const currentPath = location.pathname.split("/")[1];
+    setActiveItem(currentPath || "dashboard");
   }, [location.pathname]);
 
   const menuItems = [
@@ -43,7 +43,7 @@ const Sidebar = ({ active }) => {
   ];
 
   return (
-    <div className={`side_navbar ${active ? "active" : ""}`}>
+    <div className={`side_navbar ${isOpen ? "" : "sider-collapsed"}`}>
       <div className="logo">
         <img src={logo} alt="Logo" />
       </div>
